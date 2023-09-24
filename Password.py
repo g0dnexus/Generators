@@ -17,15 +17,17 @@ def generate_password(length=8, include_uppercase=True, include_lowercase=True, 
 
     return password
 
-length = int(input("Enter the desired password length / Введите желаемую длину пароля: "))
-print('')
-include_uppercase = input("Include uppercase letters (Yes / No) / Включать ли заглавные символы (Да / Нет): ").lower() == "да"
+while True:
+    length = int(input("Enter the desired password length / Введите желаемую длину пароля: "))
+    print('')
+    include_uppercase = input("Include uppercase letters (Yes / No) / Включать ли заглавные символы (Да / Нет): ").lower() == "да"
+    include_lowercase = input("Include lowercase letters (Yes / No) / Включать ли строчные символы (Да / Нет): ").lower() == "да"
+    include_digits = input("Include digits (Yes / No) / Включать ли цифры (Да / Нет): ").lower() == "да" 
+    include_special_chars = input("Include special characters (Yes / No) / Включать ли специальные символы (Да / Нет): ").lower() == "да"
 
-include_lowercase = input("Include lowercase letters (Yes / No) / Включать ли строчные символы (Да / Нет): ").lower() == "да"
-
-include_digits = input("Include digits (Yes / No) / Включать ли цифры (Да / Нет): ").lower() == "да" 
-
-include_special_chars = input("Include special characters (Yes / No) / Включать ли специальные символы (Да / Нет): ").lower() == "да"
-
-password = generate_password(length, include_uppercase, include_lowercase, include_digits, include_special_chars)
-print("\nСгенерированный пароль / Generated password:\n", password)
+    password = generate_password(length, include_uppercase, include_lowercase, include_digits, include_special_chars)
+    print("Generated password \nСгенерированный пароль:\n", password)
+    
+    generate_again = input("Do you want to generate another password? (Yes / No) / Хотите сгенерировать ещё пароль? (Да / Нет): ").lower() == "да"
+    if not generate_again:
+        break
